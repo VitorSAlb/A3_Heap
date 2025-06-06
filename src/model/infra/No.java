@@ -8,8 +8,7 @@ public class No {
     private No right;
     private No parent;
 
-    public No() {
-    }
+    private boolean printed = false;
 
     public No(Document document) {
         this.document = document;
@@ -29,6 +28,9 @@ public class No {
 
     public void setLeft(No left) {
         this.left = left;
+        if (left != null) {
+            left.setParent(this);
+        }
     }
 
     public No getRight() {
@@ -37,6 +39,9 @@ public class No {
 
     public void setRight(No right) {
         this.right = right;
+        if (right != null) {
+            right.setParent(this);
+        }
     }
 
     public No getParent() {
@@ -48,6 +53,14 @@ public class No {
     }
 
     public int getPriorityOrdinal() {
-        return document.getPriority().ordinal();
+        return document.getPriority().getPeso();
+    }
+
+    public boolean isPrinted() {
+        return printed;
+    }
+
+    public void setPrinted(boolean printed) {
+        this.printed = printed;
     }
 }
