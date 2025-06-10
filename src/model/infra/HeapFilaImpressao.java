@@ -18,15 +18,11 @@ public class HeapFilaImpressao {
         No node = new No(doc);
         size++;
 
-        if (root == null) {
-            root = node;
-        } else {
+        if (root == null) root = node;
+        else {
             No pai = findPai(size);
-            if (size % 2 == 0) {
-                pai.setLeft(node);
-            } else {
-                pai.setRight(node);
-            }
+            if (size % 2 == 0) pai.setLeft(node);
+            else pai.setRight(node);
             correctUp(node);
         }
     }
@@ -47,12 +43,8 @@ public class HeapFilaImpressao {
         root.setDocument(last.getDocument());
 
         No paiDoLast = last.getParent();
-        if (paiDoLast.getLeft() == last) {
-            paiDoLast.setLeft(null);
-        } else {
-            paiDoLast.setRight(null);
-        }
-
+        if (paiDoLast.getLeft() == last) paiDoLast.setLeft(null);
+        else paiDoLast.setRight(null);
         size--;
         correctDown(root);
         return removed;
@@ -63,11 +55,8 @@ public class HeapFilaImpressao {
         No atual = root;
         for (int i = 1; i < bin.length() - 1; i++) {
             if (atual == null) return null;
-            if (bin.charAt(i) == '0') {
-                atual = atual.getLeft();
-            } else {
-                atual = atual.getRight();
-            }
+            if (bin.charAt(i) == '0') atual = atual.getLeft();
+            else atual = atual.getRight();
         }
         return atual;
     }
@@ -77,11 +66,8 @@ public class HeapFilaImpressao {
         No atual = root;
         for (int i = 1; i < bin.length(); i++) {
             if (atual == null) return null;
-            if (bin.charAt(i) == '0') {
-                atual = atual.getLeft();
-            } else {
-                atual = atual.getRight();
-            }
+            if (bin.charAt(i) == '0') atual = atual.getLeft();
+            else atual = atual.getRight();
         }
         return atual;
     }
@@ -90,8 +76,7 @@ public class HeapFilaImpressao {
      *  Compara com o pai se for menor ele troca de lugar
      */
     private void correctUp(No node) {
-        while (node.getParent() != null &&
-                node.getPriorityOrdinal() < node.getParent().getPriorityOrdinal()) {
+        while (node.getParent() != null && node.getPriorityOrdinal() < node.getParent().getPriorityOrdinal()) {
             change(node, node.getParent());
             node = node.getParent();
         }
@@ -104,21 +89,17 @@ public class HeapFilaImpressao {
         while (node != null) {
             No menor = node;
 
-            if (node.getLeft() != null &&
-                    node.getLeft().getPriorityOrdinal() < menor.getPriorityOrdinal()) {
+            if (node.getLeft() != null && node.getLeft().getPriorityOrdinal() < menor.getPriorityOrdinal()) {
                 menor = node.getLeft();
             }
-            if (node.getRight() != null &&
-                    node.getRight().getPriorityOrdinal() < menor.getPriorityOrdinal()) {
+            if (node.getRight() != null && node.getRight().getPriorityOrdinal() < menor.getPriorityOrdinal()) {
                 menor = node.getRight();
             }
 
             if (menor != node) {
                 change(node, menor);
                 node = menor;
-            } else {
-                break;
-            }
+            } else break;
         }
     }
 
