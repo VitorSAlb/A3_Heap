@@ -35,4 +35,12 @@ Cada documento possui:
 - `No.java` — Nó de árvore com ponteiros e valor.
 - `HeapFilaImpressao.java` — Implementa o heap com base em ponteiros.
 
+## 🤝 Colaboradores
+
+- **Vitor Santana e Albuquerque** — 1272215370  
+- **Wadson Daniel Lima Silva** — 1272216683  
+- **Lucas Lopes Pereira Pedroza** — 1272215973  
+- **Henrique Moura Taruffe** — 1272227092  
+- **Lucas Pires Lima** — 1272215898
+
 ---
